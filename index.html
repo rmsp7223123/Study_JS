@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트</title>
+    <style>
+        #displayArea {
+            width: 500px;
+            height: 500px;
+            border : 1px groove #333;
+            overflow: hidden;
+        }
+
+        #displayArea img {
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>자바스크립트 사용 방법</h1>
+    <div id="displayArea"></div>
+    <button type="button" id="displayBtn">표시</button>
+    <!--보통 /head앞에 작성하거나 body에 작성-->
+    <script>
+      // some code here
+    </script>
+    <!--개발용(문법 해석용 라이브러리)-->
+    <script src="lib/jquery-v3.6.4.min.js"></script>
+    <script src="script/selector.js"></script>
+    <!--챕터5 섹션3 제이쿼리를 사용한 태그제어-->
+    <script>
+      // 실행용 코드 : HTML,CSS 조작/제어 하거나 이벤트를 처리하거나 ...
+      $(document).ready(function () {
+        // $ == jQeury
+        // jQuery 시작 코드 [static(정적인) 파일들(HTML, CSS, JS, IMAGE ...) 로드된 뒤 스크립트 실행]
+        console.log("print some!");
+      });
+
+      // 긴버전 vs 짧은버전(기능은 같음)
+
+      //   $(function () {
+      // jQuery 시작 코드 [static(정적인) 파일들(HTML, CSS, JS, IMAGE ...) 로드된 뒤 스크립트 실행]
+      //   });
+    </script>
+    <!--배포용-->
+    <!-- <script src="lib/jquery-v3.6.4.min.js"></script> -->
+  </body>
+</html>
