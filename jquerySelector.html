@@ -104,15 +104,15 @@
       //팝업 - DOM 로드 뒤, 3초 후 팝업창 보여주기
       setTimeout(lazyPop, 3000); // 3초뒤 팝업 호출
 
-      if(로컬스토리지, 읽기상태값) {
-        clearTimeout();
+      if (localStorage.getItem("isRead")) {
+        clearTimeout(timerID);
       }
 
       // 팝업 닫기버튼 구현
       // .click은 v3.6.4에서 더이상 사용되지 않을것이라 예고, --> 앞으로 가급적 on()을 사용.
       $("#closePop").click(function closePopup() {
         console.log("팝업닫기");
-        $("#popup").hide();
+        $("#popup").hide(2000); // 2000 = 2초
       });
 
       function lazyPop() {
