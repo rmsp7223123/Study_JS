@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery 이벤트</title>
+    <style>
+      body {
+        overflow: hidden;
+      }
+      #fish {
+        position: relative;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>제이쿼리 이벤트 처리</h1>
+    <p>
+      웹페이지에서 이벤트는 주로 마우스를 클릭, 드래그, 이동하는 동작에 의해
+      발생
+    </p>
+    <p>웹용 게임제작시에는 키보드 이벤트를 발생</p>
+    <p id="text">마우스 포인터를 여기에</p>
+    <button id="btn">더블클릭하세요</button>
+
+    <div id="fish">
+      <img src="images/fish.png" alt="물고기사진" />
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      $(function () {
+        $("#btn").on("click", function () {
+          $("#text").text("마우스 클릭함");
+        });
+        $("#btn").on("dblclick", function () {
+          $("#text").text("마우스 더블 클릭함");
+        });
+        $("#btn").on("mouseenter", function () {
+          $("#text").text("마우스 닿음");
+        });
+        $("#btn").on("mouseleave", function () {
+          $("#text").text("마우스 벗어남");
+        });
+        $("#btn").on("mousedown", function () {
+          $("#text").text("마우스 누르고있음");
+        });
+        $("#btn").on("mouseup", function () {
+          $("#text").text("마우스 누르고있다가 뗌");
+        });
+
+        $(document).keyup(function (e) {
+          //어떤 키를 눌러도
+          //   $("#text").css("color", "blue");
+          if (e.keyCode == 39) {
+            $("#fish").css("left", "+=10");
+          } else if (e.keyCode == 37) {
+            $("#fish").css("left", "-=10");
+          } else if (e.keyCode == 40) {
+            $("#fish").css("top", "+=10");
+          } else if (e.keyCode == 38) {
+            $("#fish").css("top", "-=10");
+          }
+        });
+
+        $(document).on("mousemove", function(e){
+            console.log("마우스 좌표 : " + e.clientX+", " +e.clientY);
+        })
+      });
+    </script>
+  </body>
+</html>
