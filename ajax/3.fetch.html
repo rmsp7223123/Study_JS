@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch API</title>
+    <style>
+        .item {
+            display: flex;
+        }
+        .item img {
+            order : 1;
+            width : 500px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>fetch 를 이용한 비동기 통신</h1>
+    <p>
+      jQuery를 사용하지 않거나 Internet Explorer를 고려하지 않아도 되는상황에서
+      비동기처리
+    </p>
+    <div class="movies">
+      <!-- <div class="movie_img"></div>
+      <div class="movie_info">
+        <div class="title"></div>
+        <div class="producer"></div>
+        <div class="genres"></div>
+        <div class="open_year"></div>
+      </div> -->
+    </div>
+    <script>
+      var apiURL =
+        "https://yts.mx/api/v2/list_movies.json?limit=50?minimum_rating=7";
+      fetch(apiURL)
+        .then((res) => res.json())
+        .then((json) => {
+          var movies = json.data.movies;
+          console.log(movies);
+          for (movie of movies) {
+            // var cover_img = json.data.movies[15].medium_cover_image;
+            // var title = json.data.movies[15].title;
+            // var genres = json.data.movies[15].genres;
+            // var open_year = json.data.movies[15].year;
+            // var summary = json.data.movies[15].summary;
+            var p = document.createElement("p"); // p tag를 자바스크립트로 생성
+            p.className = "item";
+            p.textContent = movie.title;
+            var img = document.createElement("img");
+            img.src = movie.large_cover_image;
+            p.appendChild(img);
+            var movieContainer = document.querySelector(".movies");
+            movieContainer.appendChild(p);
+          }
+        });
+    </script>
+  </body>
+</html>
